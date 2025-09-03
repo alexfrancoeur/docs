@@ -1,0 +1,44 @@
+---
+title: 'Instant branching'
+sidebarTitle: 'Instant branching'
+icon: 'code-branch'
+---
+
+Copy-on-Write branching system for PostgreSQL databases.\
+Xata's branching system uses Copy-on-Write (CoW) at the storage layer to create instant database branches. The child branch contains the exact schema and data of the parent branch at the moment of branch creation. After creation, branches are independent PostgreSQL instances: modifying the data in the child branch doesn't affect the parent branch, nor the other way around.
+
+The typical use-cases of branching include ephemeral environments, preview databases, or ad-hoc testing. You can also use branches as a convenient way to "freeze" the data in time, or to have a quick data rollback mechanism.
+
+## How it works
+
+When a branching operation is started, the first step is to create a Copy-on-Write snapshot of the underlying logical volume. This is done at the storage level. A new PostgreSQL instance is started on a logical volume that is initialized from this Copy-on-Write snapshot.
+
+Because the mechanism lives entirely below PostgreSQL, Xata doesn't require any modifications to the PostgreSQL source code. Therefore, we run vanilla Postgres and can support any extension.
+
+## Copy-on-Write
+
+In generic terms, [Copy-on-Write](https://en.wikipedia.org/wiki/Copy-on-write) is a mechanism used to share data efficiently between processes. Instead of copying data right away when multiple programs use it, the same data is shared between programs until one tries to modify it.
+
+When stored on disk, the database volume is split into blocks. In the illustration below, the blocks are numbered from 1 to 8. Because we're using a distributed storage system, the blocks can be on different disks and nodes. A metadata index is used to keep track where the data blocks are stored.
+<Frame>
+<img src="/images/core-concepts/copy-on-write-diagram-1.png" alt="Copy-on-Write branching — initial state"/>
+</Frame>
+When the Copy-on-Write volume snapshot is created, and the child database branch started from this snapshot, a new index is created. However, no data blocks are copied at this point, the index simply points to the original data blocks. This makes the branching operation instant, regardless of how large the database is.
+
+<Frame>
+<img src="/images/core-concepts/copy-on-write-branching-2.png" alt="Copy-on-Write branch — new branch created"/>
+</Frame>
+
+After the branch is created, whenever writes are received by a data block--either by the child or the parent branch--, that particular block is first copied. In the illustration below, this has happened for blocks 3 and 6. When a block diverges like this, the index from each branch references its own private copy of it.
+
+<Frame>
+<img src="/images/core-concepts/copy-on-write-branching-3.png" alt="Copy-on-Write branch — new branch created"/>
+</Frame>
+
+<Warning>
+Note that only the blocks that are modified need to be copied, which can result in significant IO and storage savings.
+</Warning>
+
+<Tip>
+[Learn more about branch management in the CLI documentation](/documentation/cli/branch)
+</Tip>
