@@ -1,0 +1,16 @@
+---
+title: 'Delete Project'
+openapi: 'DELETE /organizations/{organizationID}/projects/{projectID}'
+---
+
+Permanently deletes a specific project by its ID and all associated resources including branches and databases. This action cannot be undone.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization containing the project
+</ParamField>
+
+<ParamField path="projectID" type="string" required>
+  Unique identifier of the project to delete
+</ParamField>
+
+Returns a 204 status code when the project is successfully deleted.

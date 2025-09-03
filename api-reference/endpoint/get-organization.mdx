@@ -1,0 +1,17 @@
+---
+title: 'Get Organization'
+openapi: 'GET /organizations/{organizationID}'
+---
+
+Retrieve detailed information about a specific organization by its ID.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier for a specific organization
+</ParamField>
+
+<ResponseField name="id" type="string">
+  Unique identifier for the organization
+</ResponseField>
+<ResponseField name="name" type="string">
+  Human-readable name of the organization
+</ResponseField>

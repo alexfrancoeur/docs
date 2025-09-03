@@ -1,0 +1,12 @@
+---
+title: 'Delete User API Keys'
+openapi: 'DELETE /api-keys'
+---
+
+Delete multiple API keys in a single request.
+
+<ParamField body="ids" type="array" required maxItems="50">
+  Array of API key IDs to delete (maximum 50 keys per request)
+</ParamField>
+
+Returns a 204 status code when the API keys are successfully deleted.

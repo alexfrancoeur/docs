@@ -1,0 +1,29 @@
+---
+title: 'Get Project Limits'
+openapi: 'GET /organizations/{organizationID}/projects/limits'
+---
+
+Retrieves the default resource limits for projects in the specified organization, including maximum instances, storage, and allowed regions.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization to get project limits for
+</ParamField>
+
+<ResponseField name="regions" type="array">
+  List of region identifiers where branches can be deployed
+</ResponseField>
+<ResponseField name="maxInstances" type="integer">
+  Maximum number of database instances allowed per branch
+</ResponseField>
+<ResponseField name="minInstances" type="integer">
+  Minimum number of database instances required per branch
+</ResponseField>
+<ResponseField name="images" type="array">
+  List of PostgreSQL image identifiers that can be used for branches
+</ResponseField>
+<ResponseField name="maxDescriptionLength" type="integer">
+  Maximum character length allowed for project descriptions
+</ResponseField>
+<ResponseField name="maxBranches" type="integer">
+  Maximum number of branches allowed per project
+</ResponseField>

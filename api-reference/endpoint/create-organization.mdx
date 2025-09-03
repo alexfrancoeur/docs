@@ -1,0 +1,17 @@
+---
+title: 'Create Organization'
+openapi: 'POST /organizations'
+---
+
+Creates a new organization with the authenticated user as its single owner.
+
+<ParamField body="name" type="string" required>
+  Name for the new organization
+</ParamField>
+
+<ResponseField name="id" type="string">
+  Unique identifier for the organization
+</ResponseField>
+<ResponseField name="name" type="string">
+  Human-readable name of the organization
+</ResponseField>

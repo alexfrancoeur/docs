@@ -1,0 +1,21 @@
+---
+title: 'List Regions'
+openapi: 'GET /organizations/{organizationID}/regions'
+---
+
+Retrieves a list of all regions where new branches can be deployed for the specified organization.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization to check region availability for
+</ParamField>
+
+<ResponseField name="regions" type="array">
+  <Expandable title="Region Object">
+    <ResponseField name="id" type="string">
+      Unique identifier for the region
+    </ResponseField>
+    <ResponseField name="publicAccess" type="boolean">
+      Whether data plane is public-facing to the internet in this region
+    </ResponseField>
+  </Expandable>
+</ResponseField>

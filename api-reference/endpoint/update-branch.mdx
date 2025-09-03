@@ -1,0 +1,78 @@
+---
+title: 'Update Branch'
+openapi: 'PATCH /organizations/{organizationID}/projects/{projectID}/branches/{branchID}'
+---
+
+Updates the configuration of a specific branch by its ID, such as changing its name, description, or resource allocation.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization containing the project
+</ParamField>
+
+<ParamField path="projectID" type="string" required>
+  Unique identifier of the project containing the branch
+</ParamField>
+
+<ParamField path="branchID" type="string" required>
+  Unique identifier of the branch to update
+</ParamField>
+
+<ParamField body="name" type="string">
+  New name for the branch
+</ParamField>
+<ParamField body="description" type="string" maxLength="50">
+  New description for the branch (max 50 characters)
+</ParamField>
+<ParamField body="replicas" type="integer" min="0" max="4">
+  Number of database replicas to scale to
+</ParamField>
+<ParamField body="storage" type="integer" max="100">
+  Branch storage in GiB (gigabytes)
+</ParamField>
+<ParamField body="instanceType" type="string">
+  New instance type for the branch
+</ParamField>
+<ParamField body="hibernate" type="boolean">
+  Enabled when the branch should be hibernated, disabled if it needs to be reactivated
+</ParamField>
+<ParamField body="scaleToZero" type="object">
+  <Expandable title="Scale To Zero Configuration">
+    <ResponseField name="enabled" type="boolean">
+      Whether scale to zero is enabled
+    </ResponseField>
+    <ResponseField name="inactivityPeriodMinutes" type="integer">
+      Duration in minutes after which branches will be hibernated if not accessed
+    </ResponseField>
+  </Expandable>
+</ParamField>
+<ParamField body="postgresConfigurationParameters" type="object">
+  Arbitrary PostgreSQL configuration parameters for the cluster
+</ParamField>
+
+<ResponseField name="id" type="string">
+  Unique identifier for the branch
+</ResponseField>
+<ResponseField name="name" type="string">
+  Human-readable name of the branch
+</ResponseField>
+<ResponseField name="description" type="string">
+  Optional description of the branch purpose or contents
+</ResponseField>
+<ResponseField name="createdAt" type="string" format="date-time">
+  Timestamp when the branch was created
+</ResponseField>
+<ResponseField name="updatedAt" type="string" format="date-time">
+  Timestamp when the branch was last updated
+</ResponseField>
+<ResponseField name="parentID" type="string" nullable>
+  Identifier of the parent branch if this is a derived branch, null otherwise
+</ResponseField>
+<ResponseField name="connectionString" type="string" nullable>
+  Database connection string for accessing this branch
+</ResponseField>
+<ResponseField name="region" type="string">
+  Geographic region where the branch is deployed
+</ResponseField>
+<ResponseField name="publicAccess" type="boolean">
+  Whether the branch allows public access without authentication
+</ResponseField>

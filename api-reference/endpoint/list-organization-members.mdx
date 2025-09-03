@@ -1,0 +1,24 @@
+---
+title: 'List Organization Members'
+openapi: 'GET /organizations/{organizationID}/members'
+---
+
+List members of an organization.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier for a specific organization
+</ParamField>
+
+<ResponseField name="members" type="array">
+  <Expandable title="User With ID Object">
+    <ResponseField name="id" type="string">
+      Unique identifier for the user account
+    </ResponseField>
+    <ResponseField name="email" type="string" format="email">
+      Email address associated with the user account
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Name of the user
+    </ResponseField>
+  </Expandable>
+</ResponseField>

@@ -1,0 +1,24 @@
+---
+title: 'Update Organization'
+openapi: 'PUT /organizations/{organizationID}'
+---
+
+Update information for an existing organization, such as its name.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier for a specific organization
+</ParamField>
+
+<ParamField body="id" type="string">
+  Unique identifier for the organization to update
+</ParamField>
+<ParamField body="name" type="string">
+  New name for the organization
+</ParamField>
+
+<ResponseField name="id" type="string">
+  Unique identifier for the organization
+</ResponseField>
+<ResponseField name="name" type="string">
+  Human-readable name of the organization
+</ResponseField>

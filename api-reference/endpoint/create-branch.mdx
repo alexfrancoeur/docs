@@ -1,0 +1,60 @@
+---
+title: 'Create Branch'
+openapi: 'POST /organizations/{organizationID}/projects/{projectID}/branches'
+---
+
+Creates a new branch within the specified project. Branches can be created from scratch or derived from an existing parent branch.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization containing the project
+</ParamField>
+
+<ParamField path="projectID" type="string" required>
+  Unique identifier of the project to create the branch in
+</ParamField>
+
+<ParamField body="name" type="string" required>
+  Human-readable name for the new branch
+</ParamField>
+<ParamField body="description" type="string" maxLength="50">
+  Optional description for the branch purpose or contents (max 50 characters)
+</ParamField>
+<ParamField body="mode" type="string" required enum="inherit,custom">
+  The mode used to discriminate between types of branches
+</ParamField>
+
+<Note>
+When mode is "inherit", you must also provide:
+- parentID: The ID of the parent branch to inherit from
+
+When mode is "custom", you must also provide:
+- configuration: Custom cluster configuration
+</Note>
+
+<ResponseField name="id" type="string">
+  Unique identifier for the branch
+</ResponseField>
+<ResponseField name="name" type="string">
+  Human-readable name of the branch
+</ResponseField>
+<ResponseField name="description" type="string">
+  Optional description of the branch purpose or contents
+</ResponseField>
+<ResponseField name="createdAt" type="string" format="date-time">
+  Timestamp when the branch was created
+</ResponseField>
+<ResponseField name="updatedAt" type="string" format="date-time">
+  Timestamp when the branch was last updated
+</ResponseField>
+<ResponseField name="parentID" type="string" nullable>
+  Identifier of the parent branch if this is a derived branch, null otherwise
+</ResponseField>
+<ResponseField name="connectionString" type="string" nullable>
+  Database connection string for accessing this branch
+</ResponseField>
+<ResponseField name="region" type="string">
+  Geographic region where the branch is deployed
+</ResponseField>
+<ResponseField name="publicAccess" type="boolean">
+  Whether the branch allows public access without authentication
+</ResponseField>

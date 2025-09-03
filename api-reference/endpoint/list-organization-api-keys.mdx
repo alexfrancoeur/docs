@@ -1,0 +1,48 @@
+---
+title: 'List Organization API Keys'
+openapi: 'GET /organizations/{organizationID}/api-keys'
+---
+
+Retrieve a list of API keys for a specific organization.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier for a specific organization
+</ParamField>
+
+<ResponseField name="keys" type="array">
+  <Expandable title="API Key Preview Object">
+    <ResponseField name="id" type="string">
+      Unique identifier for the API key
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Human-readable name of the API key
+    </ResponseField>
+    <ResponseField name="preview" type="string">
+      Preview of the API key (first few characters)
+    </ResponseField>
+    <ResponseField name="scopes" type="array">
+      List of scopes assigned to the API key
+    </ResponseField>
+    <ResponseField name="projects" type="array">
+      Projects this API key has access to
+    </ResponseField>
+    <ResponseField name="branches" type="array">
+      Branches this API key has access to
+    </ResponseField>
+    <ResponseField name="created_at" type="string" format="date-time">
+      Timestamp when the API key was created
+    </ResponseField>
+    <ResponseField name="expiry" type="string" format="date-time" nullable>
+      Date when the API key expires (null if no expiry)
+    </ResponseField>
+    <ResponseField name="last_used" type="string" format="date-time" nullable>
+      Timestamp of the last time the key was used (null if never)
+    </ResponseField>
+    <ResponseField name="created_by" type="string" nullable>
+      ID of the user that created this API key
+    </ResponseField>
+    <ResponseField name="created_by_key" type="string" nullable>
+      ID of the API key that created this API key
+    </ResponseField>
+  </Expandable>
+</ResponseField>

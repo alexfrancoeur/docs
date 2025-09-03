@@ -1,0 +1,17 @@
+---
+title: 'List Organizations'
+openapi: 'GET /organizations'
+---
+
+Retrieve the list of all organizations the authenticated user belongs to, including their IDs and names. This endpoint allows users to view all organizations they have access to.
+
+<ResponseField name="organizations" type="array">
+  <Expandable title="Organization Object">
+    <ResponseField name="id" type="string">
+      Unique identifier for the organization
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Human-readable name of the organization
+    </ResponseField>
+  </Expandable>
+</ResponseField>

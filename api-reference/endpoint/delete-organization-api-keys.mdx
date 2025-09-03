@@ -1,0 +1,16 @@
+---
+title: 'Delete Organization API Keys'
+openapi: 'DELETE /organizations/{organizationID}/api-keys'
+---
+
+Delete multiple API keys in a single request.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier for a specific organization
+</ParamField>
+
+<ParamField body="ids" type="array" required maxItems="50">
+  Array of API key IDs to delete
+</ParamField>
+
+Returns a 204 status code when the API keys are successfully deleted.

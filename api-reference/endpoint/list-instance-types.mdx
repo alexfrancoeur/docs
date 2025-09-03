@@ -1,0 +1,37 @@
+---
+title: 'List Instance Types'
+openapi: 'GET /organizations/{organizationID}/instanceTypes'
+---
+
+Retrieves a list of all instance types for the specified organization and region.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization to check instance type availability for
+</ParamField>
+
+<ParamField query="region" type="string" required>
+  Region to check instance type availability for
+</ParamField>
+
+<ResponseField name="instanceTypes" type="array">
+  <Expandable title="Instance Type Object">
+    <ResponseField name="name" type="string">
+      Instance type name
+    </ResponseField>
+    <ResponseField name="vcpus" type="integer">
+      Number of vCPUs
+    </ResponseField>
+    <ResponseField name="ram" type="integer">
+      Memory in Gi
+    </ResponseField>
+    <ResponseField name="hourlyRate" type="number" format="double">
+      Price per hour for this instance type and region
+    </ResponseField>
+    <ResponseField name="storageMonthlyRate" type="number" format="double">
+      Price per month for a GB of storage for this region
+    </ResponseField>
+    <ResponseField name="region" type="string">
+      Region where this instance type is available
+    </ResponseField>
+  </Expandable>
+</ResponseField>

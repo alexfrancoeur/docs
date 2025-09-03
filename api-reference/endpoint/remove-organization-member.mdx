@@ -1,0 +1,16 @@
+---
+title: 'Remove Organization Member'
+openapi: 'DELETE /organizations/{organizationID}/members/{userID}'
+---
+
+Remove a member from an organization.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier for a specific organization
+</ParamField>
+
+<ParamField path="userID" type="string" required>
+  Unique identifier for a specific user account
+</ParamField>
+
+Returns a 204 status code when the member is successfully removed.

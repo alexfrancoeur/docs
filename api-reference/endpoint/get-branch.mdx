@@ -1,0 +1,110 @@
+---
+title: 'Get Branch'
+openapi: 'GET /organizations/{organizationID}/projects/{projectID}/branches/{branchID}'
+---
+
+Retrieves detailed information about a specific branch by its ID, including status, connection string, and configuration.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization containing the project
+</ParamField>
+
+<ParamField path="projectID" type="string" required>
+  Unique identifier of the project containing the branch
+</ParamField>
+
+<ParamField path="branchID" type="string" required>
+  Unique identifier of the branch to retrieve details for
+</ParamField>
+
+<ResponseField name="id" type="string">
+  Unique identifier for the branch
+</ResponseField>
+<ResponseField name="name" type="string">
+  Human-readable name of the branch
+</ResponseField>
+<ResponseField name="description" type="string">
+  Optional description of the branch purpose or contents
+</ResponseField>
+<ResponseField name="createdAt" type="string" format="date-time">
+  Timestamp when the branch was created
+</ResponseField>
+<ResponseField name="updatedAt" type="string" format="date-time">
+  Timestamp when the branch was last updated
+</ResponseField>
+<ResponseField name="parentID" type="string" nullable>
+  Identifier of the parent branch if this is a derived branch, null otherwise
+</ResponseField>
+<ResponseField name="region" type="string">
+  Geographic region where the branch is deployed
+</ResponseField>
+<ResponseField name="status" type="object">
+  <Expandable title="Branch Status">
+    <ResponseField name="status" type="string">
+      Status indicator for the branch according to CNPG
+    </ResponseField>
+    <ResponseField name="statusType" type="string" enum="STATUS_TYPE_UNSPECIFIED,STATUS_TYPE_HEALTHY,STATUS_TYPE_TRANSIENT,STATUS_TYPE_FAULT,STATUS_TYPE_HIBERNATED">
+      Type of status of the branch
+    </ResponseField>
+    <ResponseField name="instanceCount" type="integer">
+      Total number of database instances in the cluster
+    </ResponseField>
+    <ResponseField name="instanceReadyCount" type="integer">
+      Number of database instances that are ready and operational
+    </ResponseField>
+    <ResponseField name="instances" type="array">
+      <Expandable title="Instance Status">
+        <ResponseField name="id" type="string">
+          Unique identifier for the database instance
+        </ResponseField>
+        <ResponseField name="status" type="string">
+          Current operational status of the instance
+        </ResponseField>
+        <ResponseField name="primary" type="boolean">
+          Indicates if this instance is currently the primary (write) instance
+        </ResponseField>
+        <ResponseField name="targetPrimary" type="boolean">
+          Indicates if this instance is the target primary during a failover operation
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="connectionString" type="string" nullable>
+  Database connection string for accessing this branch
+</ResponseField>
+<ResponseField name="publicAccess" type="boolean">
+  Whether the branch allows public access without authentication
+</ResponseField>
+<ResponseField name="scaleToZero" type="object">
+  <Expandable title="Scale To Zero Configuration">
+    <ResponseField name="enabled" type="boolean">
+      Whether scale to zero is enabled
+    </ResponseField>
+    <ResponseField name="inactivityPeriodMinutes" type="integer">
+      Duration in minutes after which branches will be hibernated if not accessed
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="configuration" type="object">
+  <Expandable title="Cluster Configuration">
+    <ResponseField name="region" type="string">
+      Geographic region where the cluster will be deployed
+    </ResponseField>
+    <ResponseField name="storage" type="integer">
+      Branch storage in GiB (gigabytes)
+    </ResponseField>
+    <ResponseField name="instanceType" type="string">
+      The instance type according to the xata instance types available
+    </ResponseField>
+    <ResponseField name="image" type="string" enum="postgresql:17">
+      PostgreSQL image to use for the database instances
+    </ResponseField>
+    <ResponseField name="replicas" type="integer">
+      Number of replicas in the branch
+    </ResponseField>
+    <ResponseField name="postgresConfigurationParameters" type="object">
+      Arbitrary PostgreSQL configuration parameters for the cluster
+    </ResponseField>
+  </Expandable>
+</ResponseField>

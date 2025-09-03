@@ -1,0 +1,67 @@
+---
+title: 'Get Branch Metrics'
+openapi: 'POST /organizations/{organizationID}/projects/{projectID}/branches/{branchID}/metrics'
+---
+
+Retrieve branch metrics.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization containing the project
+</ParamField>
+
+<ParamField path="projectID" type="string" required>
+  Unique identifier of the project containing the branch
+</ParamField>
+
+<ParamField path="branchID" type="string" required>
+  Unique identifier of the branch to retrieve metrics for
+</ParamField>
+
+<ParamField body="start" type="string" format="date-time" required>
+  Start time
+</ParamField>
+<ParamField body="end" type="string" format="date-time" required>
+  End time
+</ParamField>
+<ParamField body="metric" type="string" required enum="cpu,memory,disk,connections_active,connections_idle,network_ingress,network_egress,iops_read,iops_write,latency_read,latency_write,throughput_read,throughput_write">
+  Metric name to query
+</ParamField>
+<ParamField body="instances" type="array" required>
+  List of instance IDs to query
+</ParamField>
+<ParamField body="aggregations" type="array" required enum="avg,max,min">
+  List of aggregations to get, this is how the data-points within the interval are aggregated. Each one will generate a separate time-series in the response.
+</ParamField>
+
+<ResponseField name="start" type="string" format="date-time">
+  Start time of the metrics query
+</ResponseField>
+<ResponseField name="end" type="string" format="date-time">
+  End time of the metrics query
+</ResponseField>
+<ResponseField name="metric" type="string">
+  Name of the metric that was queried
+</ResponseField>
+<ResponseField name="series" type="array">
+  <Expandable title="Metric Series">
+    <ResponseField name="instanceID" type="string">
+      ID of the instance
+    </ResponseField>
+    <ResponseField name="aggregation" type="string" enum="avg,max,min">
+      The aggregation used to generate this time-series
+    </ResponseField>
+    <ResponseField name="values" type="array">
+      <Expandable title="Metric Value">
+        <ResponseField name="timestamp" type="string" format="date-time">
+          Timestamp of the metric value
+        </ResponseField>
+        <ResponseField name="value" type="number">
+          The metric value at this timestamp
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="unit" type="string">
+  The unit of the metric (percentage, bytes, ms, etc.)
+</ResponseField>

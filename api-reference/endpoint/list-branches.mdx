@@ -1,0 +1,43 @@
+---
+title: 'List Branches'
+openapi: 'GET /organizations/{organizationID}/projects/{projectID}/branches'
+---
+
+Retrieves a list of all branches within the specified project, including their metadata, region, and access settings.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization containing the project
+</ParamField>
+
+<ParamField path="projectID" type="string" required>
+  Unique identifier of the project to list branches from
+</ParamField>
+
+<ResponseField name="branches" type="array">
+  <Expandable title="Branch List Metadata Object">
+    <ResponseField name="id" type="string">
+      Unique identifier for the branch
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Human-readable name of the branch
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Optional description of the branch purpose or contents
+    </ResponseField>
+    <ResponseField name="createdAt" type="string" format="date-time">
+      Timestamp when the branch was created
+    </ResponseField>
+    <ResponseField name="updatedAt" type="string" format="date-time">
+      Timestamp when the branch was last updated
+    </ResponseField>
+    <ResponseField name="parentID" type="string" nullable>
+      Identifier of the parent branch if this is a derived branch, null otherwise
+    </ResponseField>
+    <ResponseField name="region" type="string">
+      Geographic region where the branch is deployed
+    </ResponseField>
+    <ResponseField name="publicAccess" type="boolean">
+      Whether the branch allows public access without authentication
+    </ResponseField>
+  </Expandable>
+</ResponseField>

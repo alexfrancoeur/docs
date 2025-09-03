@@ -1,0 +1,16 @@
+---
+title: 'Create Organization Invitation'
+openapi: 'POST /organizations/{organizationID}/invitations'
+---
+
+Send an invitation email to a user to join an organization.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier for a specific organization
+</ParamField>
+
+<ParamField body="email" type="string" format="email" required>
+  Email address of the user to invite
+</ParamField>
+
+Returns a 201 status code when the invitation is sent successfully.

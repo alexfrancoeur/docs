@@ -1,0 +1,66 @@
+---
+title: 'Get Branch PostgreSQL Config'
+openapi: 'GET /organizations/{organizationID}/projects/{projectID}/branches/{branchID}/postgres-config'
+---
+
+Retrieves detailed information about the current PostgreSQL configuration parameters for a branch, including parameter types, descriptions, acceptable ranges, default values, and current values.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization containing the project
+</ParamField>
+
+<ParamField path="projectID" type="string" required>
+  Unique identifier of the project containing the branch
+</ParamField>
+
+<ParamField path="branchID" type="string" required>
+  Unique identifier of the branch to retrieve PostgreSQL configuration for
+</ParamField>
+
+<ResponseField name="parameters" type="array">
+  <Expandable title="PostgreSQL Config Parameter">
+    <ResponseField name="name" type="string">
+      The name of the PostgreSQL parameter
+    </ResponseField>
+    <ResponseField name="type" type="string" enum="string,int,float,bytes,enum,duration">
+      The data type of the parameter
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Human-readable description of what the parameter controls
+    </ResponseField>
+    <ResponseField name="section" type="string">
+      The section/category this parameter belongs to
+    </ResponseField>
+    <ResponseField name="acceptableRange" type="object">
+      <Expandable title="Acceptable Range">
+        <ResponseField name="minValue" type="string">
+          Minimum allowed value (if applicable)
+        </ResponseField>
+        <ResponseField name="maxValue" type="string">
+          Maximum allowed value (if applicable)
+        </ResponseField>
+        <ResponseField name="enumValues" type="array">
+          List of allowed enum values (if applicable)
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="defaultValue" type="string">
+      The default value for this parameter
+    </ResponseField>
+    <ResponseField name="defaultValueSource" type="string" enum="postgres,instance_type">
+      The source of the default value
+    </ResponseField>
+    <ResponseField name="currentValue" type="string">
+      The current value of this parameter in the branch
+    </ResponseField>
+    <ResponseField name="documentationLink" type="string">
+      Link to PostgreSQL documentation for this parameter
+    </ResponseField>
+    <ResponseField name="recommendation" type="string">
+      Optional recommendation for this parameter (currently empty)
+    </ResponseField>
+    <ResponseField name="restartRequired" type="boolean">
+      Whether a database restart is required for this parameter change to take effect
+    </ResponseField>
+  </Expandable>
+</ResponseField>

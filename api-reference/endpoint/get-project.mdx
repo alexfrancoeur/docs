@@ -1,0 +1,55 @@
+---
+title: 'Get Project'
+openapi: 'GET /organizations/{organizationID}/projects/{projectID}'
+---
+
+Retrieves detailed information about a specific project by its ID within the specified organization.
+
+<ParamField path="organizationID" type="string" required>
+  Unique identifier of the organization containing the project
+</ParamField>
+
+<ParamField path="projectID" type="string" required>
+  Unique identifier of the project to retrieve
+</ParamField>
+
+<ResponseField name="id" type="string">
+  Unique identifier for the project
+</ResponseField>
+<ResponseField name="name" type="string">
+  Human-readable name of the project
+</ResponseField>
+<ResponseField name="createdAt" type="string" format="date-time">
+  Timestamp when the project was created
+</ResponseField>
+<ResponseField name="updatedAt" type="string" format="date-time">
+  Timestamp when the project was last updated
+</ResponseField>
+<ResponseField name="configuration" type="object">
+  <Expandable title="Project Configuration">
+    <ResponseField name="scaleToZero" type="object">
+      <Expandable title="Scale To Zero Configuration">
+        <ResponseField name="baseBranches" type="object">
+          <Expandable title="Scale To Zero Configuration">
+            <ResponseField name="enabled" type="boolean">
+              Whether scale to zero is enabled
+            </ResponseField>
+            <ResponseField name="inactivityPeriodMinutes" type="integer">
+              Duration in minutes after which branches will be hibernated if not accessed
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name="childBranches" type="object">
+          <Expandable title="Scale To Zero Configuration">
+            <ResponseField name="enabled" type="boolean">
+              Whether scale to zero is enabled
+            </ResponseField>
+            <ResponseField name="inactivityPeriodMinutes" type="integer">
+              Duration in minutes after which branches will be hibernated if not accessed
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
