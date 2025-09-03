@@ -1,6 +1,7 @@
 ---
 title: Instant branching
 description: Copy-on-Write branching system for PostgreSQL databases.
+icon: "git-branch"
 ---
 
 Xata's branching system uses Copy-on-Write (CoW) at the storage layer to create instant database branches. The child branch contains the exact schema and data of the parent branch at the moment of branch creation. After creation, branches are independent PostgreSQL instances: modifying the data in the child branch doesn't affect the parent branch, nor the other way around.

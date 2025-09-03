@@ -1,53 +1,67 @@
 ---
-title: "Xata Documentation"
-sidebarTitle: "Overview"
-description: ""
-icon: "magnifying-glass"
-
-
+title: Xata Documentation
+icon: "book-open"
 ---
-Xata is a modern PostgreSQL platform designed for developers who want to build faster and ship with confidence. Our platform is built to support your production use cases as well as staging environments and developer workflows with features like instant branching, zero-downtime schema changes, and built-in data anonymization.
+
+Xata is a modern PostgreSQL platform designed for developers who want to build faster and ship with confidence. Our platform is built to support your production use cases as well as staging environments and developer workflows with  features like instant branching, zero-downtime schema changes, and built-in data anonymization.
 
 Here's a quick introductary video to learn more:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7P5kyzEfAdc?si=UuUo0MAHJiHSt1BB" title="Introduction to Xata" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+[![Introduction to Xata](assets/images/intro_xata.png)](https://youtu.be/7P5kyzEfAdc?si=WvSdBDBp95vJM91U)
 
 ## Why Xata?
 
-<table><thead><tr><th>Feature</th><th>Description</th><th>Benefit</th><th>Learn More</th></tr></thead><tbody><tr><td><strong>🚀 Instant Branching</strong></td><td>Create database branches in seconds, not minutes</td><td>Develop and test with production-like data safely</td><td><a class="text-link" href="/documentation/core-concepts/branching">Branching Guide →</a></td></tr><tr><td><strong>⚡ Zero-Downtime Schema Changes</strong></td><td>Modify your database schema without service interruption</td><td>Deploy schema changes with confidence</td><td><a class="text-link" href="/documentation/core-concepts/schema-changes">Schema Changes →</a></td></tr><tr><td><strong>🔒 Built-in Data Anonymization</strong></td><td>Automatically anonymize sensitive data for development</td><td>Use real data safely in non-production environments</td><td><a class="text-link" href="/documentation/core-concepts/anonymization">Anonymization →</a></td></tr><tr><td><strong>💰 Scale to Zero</strong></td><td>Hibernate inactive branches to minimize costs</td><td>Pay only for active compute time, perfect for development</td><td><a class="text-link" href="/documentation/core-concepts/scale-to-zero">Scale to Zero →</a></td></tr><tr><td><strong>🏗️ Deployment Flexibility</strong></td><td>Choose between SaaS or bring-your-own-cloud (BYOC)</td><td>Deploy where you need - managed service or your infrastructure</td><td><a class="text-link" href="/documentation/deployment">Deployment →</a></td></tr></tbody></table>
+| Feature | Description | Benefit | Learn More |
+|---------|-------------|---------|------------|
+| **🚀 Instant Branching** | Create database branches in seconds, not minutes | Develop and test with production-like data safely | [Branching Guide →](/core-concepts/branching) |
+| **⚡ Zero-Downtime Schema Changes** | Modify your database schema without service interruption | Deploy schema changes with confidence | [Schema Changes →](/core-concepts/schema-changes) |
+| **🔒 Built-in Data Anonymization** | Automatically anonymize sensitive data for development | Use real data safely in non-production environments | [Anonymization →](/core-concepts/anonymization) |
+| **💰 Scale to Zero** | Hibernate inactive branches to minimize costs | Pay only for active compute time, perfect for development | [Scale to Zero →](/core-concepts/scale-to-zero) |
+| **🏗️ Deployment Flexibility** | Choose between SaaS or bring-your-own-cloud (BYOC) | Deploy where you need - managed service or your infrastructure | [Deployment →](/deployment) |
 
-<Tip>
 Interested in how we compare against other Postgres solutions out there? Check out this [comparison blog series](https://xata.io/blog/neon-vs-supabase-vs-xata-postgres-branching-part-1) for more details.
-</Tip>
 
 ## Get Started
+
 Get up and running with Xata in minutes:
 
-<ol>
-<li>
-[Create your first project](/documentation/getting-started) - Set up a Xata account and create your first database
-</li>
-<li>
-[Choose your framework](/documentation/quickstarts)- Connect your favorite language or framework
-</li>
-</ol>
+1. **[Create your first project](/getting-started)** - Set up a Xata account and create your first database
+2. **[Choose your framework](/quickstarts)** - Connect your favorite language or framework
 
-## Popular Quickstarts
-<table><thead><tr><th>Framework/ORM</th><th>Quickstart</th><th>Description</th></tr></thead><tbody><tr><td><strong>Next.js</strong></td><td><a class="text-link" href="/documentation/quickstarts/nextjs">Get Started →</a></td><td>Full-stack React applications</td></tr><tr><td><strong>Drizzle</strong></td><td><a class="text-link" href="/documentation/quickstarts/drizzle">Get Started →</a></td><td>TypeScript ORM with type safety</td></tr><tr><td><strong>SQLAlchemy</strong></td><td><a class="text-link" href="/documentation/quickstarts/sqlalchemy">Get Started →</a></td><td>Python SQL toolkit and ORM</td></tr><tr><td><strong>Django</strong></td><td><a class="text-link" href="/documentation/quickstarts/django">Get Started →</a></td><td>Python web framework</td></tr></tbody></table>
+### Popular Quickstarts
 
-[View all quickstarts →](/documentation/quickstarts)
+| Framework/ORM | Quickstart | Description |
+|---------------|------------|-------------|
+| **Next.js** | [Get Started →](/quickstarts/nextjs) | Full-stack React applications |
+| **Drizzle** | [Get Started →](/quickstarts/drizzle) | TypeScript ORM with type safety |
+| **SQLAlchemy** | [Get Started →](/quickstarts/sqlalchemy) | Python SQL toolkit and ORM |
+| **Django** | [Get Started →](/quickstarts/django) | Python web framework |
+
+[View all quickstarts →](/quickstarts)
 
 ## Tutorials & Guides
-<table><thead><tr><th><strong>Tutorial</strong></th><th><strong>Description</strong></th></tr></thead><tbody><tr><td><a class="link" href="/documentation/tutorials/create-staging-replica">Set up staging replica</a></td><td>Create a staging environment with production data</td></tr><tr><td><a class="link" href="/documentation/tutorials/schema-change">Schema changes workflow</a></td><td>Learn best practices for schema evolution</td></tr></tbody></table>
+
+| Tutorial | Description |
+|----------|-------------|
+| **[Set up staging replica](/tutorials/create-staging-replica)** | Create a staging environment with production data |
+| **[Schema changes workflow](/tutorials/schema-change)** | Learn best practices for schema evolution |
 
 ## Migration Guides
+
 Migrate your existing PostgreSQL databases to Xata using `xata clone`:
 
-<table><thead><tr><th>Provider</th><th>Migration Guide</th><th>Description</th></tr></thead><tbody><tr><td><strong>AWS RDS &amp; Aurora</strong></td><td><a class="text-link" href="/documentation/migrations/aws-rds">Migrate →</a></td><td>Amazon's managed PostgreSQL services</td></tr><tr><td><strong>GCP Cloud SQL</strong></td><td><a class="text-link" href="/documentation/migrations/gcp-cloudsql">Migrate →</a></td><td>Google Cloud's managed PostgreSQL</td></tr><tr><td><strong>Azure Database</strong></td><td><a class="text-link" href="/documentation/migrations/azure">Migrate →</a></td><td>Microsoft's managed PostgreSQL service</td></tr><tr><td><strong>Neon</strong></td><td><a class="text-link" href="/documentation/migrations/neon">Migrate →</a></td><td>Serverless PostgreSQL with branching</td></tr><tr><td><strong>Supabase</strong></td><td><a class="text-link" href="/documentation/migrations/supabase">Migrate →</a></td><td>Open source Firebase alternative</td></tr></tbody></table>
+| Provider | Migration Guide | Description |
+|----------|----------------|-------------|
+| **AWS RDS & Aurora** | [Migrate →](/migrations/aws-rds) | Amazon's managed PostgreSQL services |
+| **GCP Cloud SQL** | [Migrate →](/migrations/gcp-cloudsql) | Google Cloud's managed PostgreSQL |
+| **Azure Database** | [Migrate →](/migrations/azure) | Microsoft's managed PostgreSQL service |
+| **Neon** | [Migrate →](/migrations/neon) | Serverless PostgreSQL with branching |
+| **Supabase** | [Migrate →](/migrations/supabase) | Open source Firebase alternative |
 
-[View all migration guides →](/documentation/migrations)
+[View all migration guides →](/migrations)
 
 ## Tools & Integrations
+
 ### Command Line Interface
 Manage your Xata databases directly from the terminal:
 
@@ -64,35 +78,31 @@ xata branch create feature-branch
 xata branch checkout main
 ```
 
-[View all CLI commands →](/documentation/cli)
+[View all CLI commands →](/cli)
 
-## Automation & CI/CD
+### Automation & CI/CD
 Integrate Xata into your development workflow:
-<ul>
-<li><strong><a class="text-link" href="/documentation/automations/ga-pr">GitHub Actions</a></strong> - Create database branches for pull requests</li>
-<li><strong><a class="text-link" href="/documentation/automations/kubernetes-clone">Kubernetes</a></strong> - Deploy with container orchestration</li>
-</ul>
-[View all automation workflows →](/documentation/automations/ga-pr)
 
+- **[GitHub Actions](/automations/ga-pr)** - Create database branches for pull requests
+- **[Kubernetes](/automations/kubernetes-clone)** - Deploy with container orchestration
 
+[View all automation workflows →](/automations)
 
-## REST API
+### REST API
 Programmatically manage your Xata resources:
-<ul>
-<li><strong><a class="text-link" href="/documentation/api/organizations">Organizations</a></strong> - Manage teams and access</li>
-<li><strong><a class="text-link" href="/documentation/api/projects">Projects</a></strong> - Create and configure databases</li>
-<li><strong><a class="text-link" href="/documentation/api/branches">Branches</a></strong> - Branch management operations</li>
-<li><strong><a class="text-link" href="/documentation/api/metrics">Metrics</a></strong> - Performance and usage analytics</li>
-</ul>
+
+- **[Organizations](/api/organizations)** - Manage teams and access
+- **[Projects](/api/projects)** - Create and configure databases
+- **[Branches](/api/branches)** - Branch management operations
+- **[Metrics](/api/metrics)** - Performance and usage analytics
 
 ## Get Help
-<ul>
-<li><strong><a target="_blank" rel="noopener noreferrer" class="text-link" href="https://discord.gg/xata">Discord Community</a></strong> - Join 10,000+ developers</li>
-<li><strong><a target="_blank" rel="noopener noreferrer" class="text-link" href="https://github.com/xataio/xata/discussions">GitHub Discussions</a></strong> - Ask questions and share solutions</li>
-<li><strong><a target="_blank" rel="noopener noreferrer" class="text-link" href="https://status.xata.io">Status Page</a></strong> - Check service status</li>
-<li><strong><a target="_blank" rel="noopener noreferrer" class="text-link" href="/support">Support</a></strong> - Enterprise support and consulting</li>
-</ul>
+
+- **[Discord Community](https://discord.gg/xata)** - Join 10,000+ developers
+- **[GitHub Discussions](https://github.com/xataio/xata/discussions)** - Ask questions and share solutions
+- **[Status Page](https://status.xata.io)** - Check service status
+- **[Support](https://xata.io/support)** - Enterprise support and consulting
 
 ---
 
-_Built with ❤️ by the Xata team_
+*Built with ❤️ by the Xata team* 

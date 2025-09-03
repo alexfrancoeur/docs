@@ -37,39 +37,18 @@
             "group": "Core Concepts",
             "pages": [
               "documentation/core-concepts/core-concepts",
-              {
-                "group": "Branching & Schema",
-                "pages": [
-                  "documentation/core-concepts/branching",
-                  "documentation/core-concepts/schema-changes"
-                ]
-              },
-              {
-                "group": "Data Management",
-                "pages": [
-                  "documentation/core-concepts/anonymization",
-                  "documentation/core-concepts/scale-to-zero"
-                ]
-              }
+              "documentation/core-concepts/branching",
+              "documentation/core-concepts/anonymization",
+              "documentation/core-concepts/schema-changes",
+              "documentation/core-concepts/scale-to-zero"
             ]
           },
           {
             "group": "Tutorials",
             "pages": [
               "documentation/tutorials/tutorials",
-              {
-                "group": "Setup & Migration",
-                "pages": [
-                  "documentation/tutorials/create-staging-replica",
-                  "documentation/tutorials/migrate-to-xata"
-                ]
-              },
-              {
-                "group": "Schema Management",
-                "pages": [
-                  "documentation/tutorials/schema-change"
-                ]
-              }
+              "documentation/tutorials/create-staging-replica",
+              "documentation/tutorials/schema-change"
             ]
           },
           {
@@ -173,12 +152,6 @@
             "group": "Extensions",
             "pages": [
               "documentation/extensions/index"
-            ]
-          },
-          {
-            "group": "Snippets",
-            "pages": [
-              "documentation/snippets/snippet-intro"
             ]
           }
         ]
