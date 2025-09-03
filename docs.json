@@ -170,25 +170,6 @@
             ]
           },
           {
-            "group": "AI Tools",
-            "pages": [
-              "documentation/ai-tools/claude-code",
-              "documentation/ai-tools/cursor",
-              "documentation/ai-tools/windsurf"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "documentation/essentials/code",
-              "documentation/essentials/images",
-              "documentation/essentials/markdown",
-              "documentation/essentials/navigation",
-              "documentation/essentials/reusable-snippets",
-              "documentation/essentials/settings"
-            ]
-          },
-          {
             "group": "Extensions",
             "pages": [
               "documentation/extensions/index"
@@ -289,13 +270,13 @@
                   "documentation/cli/keys"
                 ]
               },
-              {
-                "group": "Branch Management",
-                "pages": [
-                  "documentation/cli/branch",
-                  "documentation/cli/checkout",
-                ]
-              },
+                             {
+                 "group": "Branch Management",
+                 "pages": [
+                   "documentation/cli/branch",
+                   "documentation/cli/checkout"
+                 ]
+               },
               {
                 "group": "Organization & Project Management",
                 "pages": [
@@ -310,15 +291,16 @@
                   "documentation/cli/completions"
                 ]
               },
-          {
-                "group": "Operations",
-                "pages": [
-                  "documentation/cli/upgrade",
-                  "documentation/cli/status",
-                  "documentation/cli/version"
-                ]
-              }
-      },
+                         {
+                 "group": "Operations",
+                 "pages": [
+                   "documentation/cli/upgrade",
+                   "documentation/cli/status",
+                   "documentation/cli/version"
+                 ]
+               }
+             ]
+       },
       {
         "dropdown": "Changelog",
         "icon": "history",
@@ -370,22 +352,13 @@
       "vscode"
     ]
   },
-  "footer": {
-    "socials": {
-      "x": "http://twitter.com/xata",
-      "linkedin": "https://www.linkedin.com/company/xataio",
-      "github": "https://github.com/mintlify",
-      "discord": "https://xata.io/discord",
-      "youtube": "https://www.youtube.com/@xataio"
-    }
-  }
-  "contextual": {
-    "options": [
-      "copy",
-      "chatgpt",
-      "claude",
-      "cursor",
-      "vscode"
-    ]
-  }
+     "footer": {
+     "socials": {
+       "x": "http://twitter.com/xata",
+       "linkedin": "https://www.linkedin.com/company/xataio",
+       "github": "https://github.com/mintlify",
+       "discord": "https://xata.io/discord",
+       "youtube": "https://www.youtube.com/@xataio"
+     }
+   }
 }
