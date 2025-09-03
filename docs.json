@@ -32,90 +32,175 @@
             "group": "Core Concepts",
             "pages": [
               "documentation/core-concepts/core-concepts",
-              "documentation/core-concepts/branching",
-              "documentation/core-concepts/schema-changes",
-              "documentation/core-concepts/anonymization",
-              "documentation/core-concepts/scale-to-zero"
+              {
+                "group": "Branching & Schema",
+                "pages": [
+                  "documentation/core-concepts/branching",
+                  "documentation/core-concepts/schema-changes"
+                ]
+              },
+              {
+                "group": "Data Management",
+                "pages": [
+                  "documentation/core-concepts/anonymization",
+                  "documentation/core-concepts/scale-to-zero"
+                ]
+              }
             ]
           },
           {
             "group": "Tutorials",
             "pages": [
               "documentation/tutorials/tutorials",
-              "documentation/tutorials/create-staging-replica",
-              "documentation/tutorials/migrate-to-xata",
-              "documentation/tutorials/schema-change"
+              {
+                "group": "Setup & Migration",
+                "pages": [
+                  "documentation/tutorials/create-staging-replica",
+                  "documentation/tutorials/migrate-to-xata"
+                ]
+              },
+              {
+                "group": "Schema Management",
+                "pages": [
+                  "documentation/tutorials/schema-change"
+                ]
+              }
             ]
           },
           {
             "group": "Quickstarts",
             "pages": [
               "documentation/quickstarts/quickstarts",
-              "documentation/quickstarts/astro",
-              "documentation/quickstarts/django",
-              "documentation/quickstarts/drizzle",
-              "documentation/quickstarts/go",
-              "documentation/quickstarts/gorm",
-              "documentation/quickstarts/java",
-              "documentation/quickstarts/jpa",
-              "documentation/quickstarts/laravel",
-              "documentation/quickstarts/nextjs",
-              "documentation/quickstarts/nodejs",
-              "documentation/quickstarts/nuxt",
-              "documentation/quickstarts/prisma",
-              "documentation/quickstarts/python",
-              "documentation/quickstarts/rails",
-              "documentation/quickstarts/remix",
-              "documentation/quickstarts/rust",
-              "documentation/quickstarts/sqlalchemy",
-              "documentation/quickstarts/svelte",
-              "documentation/quickstarts/typeorm"
+              {
+                "group": "Frontend Frameworks",
+                "pages": [
+                  "documentation/quickstarts/astro",
+                  "documentation/quickstarts/nextjs",
+                  "documentation/quickstarts/nuxt",
+                  "documentation/quickstarts/remix",
+                  "documentation/quickstarts/svelte"
+                ]
+              },
+              {
+                "group": "Backend Frameworks",
+                "pages": [
+                  "documentation/quickstarts/django",
+                  "documentation/quickstarts/laravel",
+                  "documentation/quickstarts/rails"
+                ]
+              },
+              {
+                "group": "Languages",
+                "pages": [
+                  "documentation/quickstarts/go",
+                  "documentation/quickstarts/java",
+                  "documentation/quickstarts/nodejs",
+                  "documentation/quickstarts/python",
+                  "documentation/quickstarts/rust"
+                ]
+              },
+              {
+                "group": "ORMs & Libraries",
+                "pages": [
+                  "documentation/quickstarts/drizzle",
+                  "documentation/quickstarts/gorm",
+                  "documentation/quickstarts/jpa",
+                  "documentation/quickstarts/prisma",
+                  "documentation/quickstarts/sqlalchemy",
+                  "documentation/quickstarts/typeorm"
+                ]
+              }
             ]
           },
           {
             "group": "Migration Guides",
             "pages": [
               "documentation/migrations/migrations",
-              "documentation/migrations/alloydb",
-              "documentation/migrations/aws-aurora",
-              "documentation/migrations/aws-rds",
-              "documentation/migrations/azure",
-              "documentation/migrations/digitalocean",
-              "documentation/migrations/gcp-cloudsql",
-              "documentation/migrations/heroku",
-              "documentation/migrations/mysql",
-              "documentation/migrations/neon",
-              "documentation/migrations/self-hosted",
-              "documentation/migrations/supabase"
+              {
+                "group": "Cloud Providers",
+                "pages": [
+                  "documentation/migrations/aws-aurora",
+                  "documentation/migrations/aws-rds",
+                  "documentation/migrations/azure",
+                  "documentation/migrations/digitalocean",
+                  "documentation/migrations/gcp-cloudsql"
+                ]
+              },
+              {
+                "group": "Database Services",
+                "pages": [
+                  "documentation/migrations/alloydb",
+                  "documentation/migrations/heroku",
+                  "documentation/migrations/neon",
+                  "documentation/migrations/supabase"
+                ]
+              },
+              {
+                "group": "Self-Hosted",
+                "pages": [
+                  "documentation/migrations/mysql",
+                  "documentation/migrations/self-hosted"
+                ]
+              }
             ]
           },
           {
             "group": "Command-line Interface",
             "pages": [
               "documentation/cli/cli",
-              "documentation/cli/auth",
-              "documentation/cli/branch",
-              "documentation/cli/checkout",
-              "documentation/cli/clone",
-              "documentation/cli/completions",
-              "documentation/cli/init",
-              "documentation/cli/keys",
-              "documentation/cli/organization",
-              "documentation/cli/project",
-              "documentation/cli/roll",
-              "documentation/cli/status",
-              "documentation/cli/upgrade",
-              "documentation/cli/version"
+              {
+                "group": "Authentication & Setup",
+                "pages": [
+                  "documentation/cli/auth",
+                  "documentation/cli/init",
+                  "documentation/cli/keys"
+                ]
+              },
+              {
+                "group": "Branch Management",
+                "pages": [
+                  "documentation/cli/branch",
+                  "documentation/cli/checkout",
+                  "documentation/cli/clone"
+                ]
+              },
+              {
+                "group": "Project Management",
+                "pages": [
+                  "documentation/cli/organization",
+                  "documentation/cli/project",
+                  "documentation/cli/status"
+                ]
+              },
+              {
+                "group": "Advanced Operations",
+                "pages": [
+                  "documentation/cli/roll",
+                  "documentation/cli/upgrade",
+                  "documentation/cli/version",
+                  "documentation/cli/completions"
+                ]
+              }
             ]
           },
           {
             "group": "Automations",
             "pages": [
               "documentation/automations/automations",
-              "documentation/automations/ga-check",
-              "documentation/automations/ga-clone",
-              "documentation/automations/ga-pr",
-              "documentation/automations/kubernetes-clone"
+              {
+                "group": "GitHub Actions",
+                "pages": [
+                  "documentation/automations/ga-check",
+                  "documentation/automations/ga-clone",
+                  "documentation/automations/ga-pr"
+                ]
+              },
+              {
+                "group": "Kubernetes",
+                "pages": [
+                  "documentation/automations/kubernetes-clone"
+                ]
+              }
             ]
           },
           {
