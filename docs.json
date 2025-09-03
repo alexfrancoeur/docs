@@ -24,49 +24,129 @@
             "pages": [
               "documentation/overview",
               "documentation/getting-started",
+              "documentation/quickstart",
               "documentation/deployment"
             ]
           },
           {
             "group": "Core Concepts",
             "pages": [
-              "documentation/core-concepts/branching"
+              "documentation/core-concepts/core-concepts",
+              "documentation/core-concepts/branching",
+              "documentation/core-concepts/schema-changes",
+              "documentation/core-concepts/anonymization",
+              "documentation/core-concepts/scale-to-zero"
             ]
           },
           {
             "group": "Tutorials",
             "pages": [
-              "documentation/tutorials/overview"
+              "documentation/tutorials/tutorials",
+              "documentation/tutorials/create-staging-replica",
+              "documentation/tutorials/migrate-to-xata",
+              "documentation/tutorials/schema-change"
             ]
           },
           {
             "group": "Quickstarts",
             "pages": [
-              "documentation/quickstarts/django"
+              "documentation/quickstarts/quickstarts",
+              "documentation/quickstarts/astro",
+              "documentation/quickstarts/django",
+              "documentation/quickstarts/drizzle",
+              "documentation/quickstarts/go",
+              "documentation/quickstarts/gorm",
+              "documentation/quickstarts/java",
+              "documentation/quickstarts/jpa",
+              "documentation/quickstarts/laravel",
+              "documentation/quickstarts/nextjs",
+              "documentation/quickstarts/nodejs",
+              "documentation/quickstarts/nuxt",
+              "documentation/quickstarts/prisma",
+              "documentation/quickstarts/python",
+              "documentation/quickstarts/rails",
+              "documentation/quickstarts/remix",
+              "documentation/quickstarts/rust",
+              "documentation/quickstarts/sqlalchemy",
+              "documentation/quickstarts/svelte",
+              "documentation/quickstarts/typeorm"
             ]
           },
           {
             "group": "Migration Guides",
             "pages": [
-              "documentation/migrations/mysql"
+              "documentation/migrations/migrations",
+              "documentation/migrations/alloydb",
+              "documentation/migrations/aws-aurora",
+              "documentation/migrations/aws-rds",
+              "documentation/migrations/azure",
+              "documentation/migrations/digitalocean",
+              "documentation/migrations/gcp-cloudsql",
+              "documentation/migrations/heroku",
+              "documentation/migrations/mysql",
+              "documentation/migrations/neon",
+              "documentation/migrations/self-hosted",
+              "documentation/migrations/supabase"
             ]
           },
           {
             "group": "Command-line Interface",
             "pages": [
-              "documentation/cli/organization"
-            ]
-          },
-          {
-            "group": "REST API",
-            "pages": [
-              "documentation/api/users"
+              "documentation/cli/cli",
+              "documentation/cli/auth",
+              "documentation/cli/branch",
+              "documentation/cli/checkout",
+              "documentation/cli/clone",
+              "documentation/cli/completions",
+              "documentation/cli/init",
+              "documentation/cli/keys",
+              "documentation/cli/organization",
+              "documentation/cli/project",
+              "documentation/cli/roll",
+              "documentation/cli/status",
+              "documentation/cli/upgrade",
+              "documentation/cli/version"
             ]
           },
           {
             "group": "Automations",
             "pages": [
-              "documentation/automations/ga-check"
+              "documentation/automations/automations",
+              "documentation/automations/ga-check",
+              "documentation/automations/ga-clone",
+              "documentation/automations/ga-pr",
+              "documentation/automations/kubernetes-clone"
+            ]
+          },
+          {
+            "group": "AI Tools",
+            "pages": [
+              "documentation/ai-tools/claude-code",
+              "documentation/ai-tools/cursor",
+              "documentation/ai-tools/windsurf"
+            ]
+          },
+          {
+            "group": "Essentials",
+            "pages": [
+              "documentation/essentials/code",
+              "documentation/essentials/images",
+              "documentation/essentials/markdown",
+              "documentation/essentials/navigation",
+              "documentation/essentials/reusable-snippets",
+              "documentation/essentials/settings"
+            ]
+          },
+          {
+            "group": "Extensions",
+            "pages": [
+              "documentation/extensions/index"
+            ]
+          },
+          {
+            "group": "Snippets",
+            "pages": [
+              "documentation/snippets/snippet-intro"
             ]
           }
         ]
@@ -75,11 +155,63 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API References",
+            "group": "Branches",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete"
+              "api-reference/endpoint/create-branch",
+              "api-reference/endpoint/delete-branch",
+              "api-reference/endpoint/get-branch",
+              "api-reference/endpoint/get-branch-credentials",
+              "api-reference/endpoint/get-branch-metrics",
+              "api-reference/endpoint/get-branch-postgres-config",
+              "api-reference/endpoint/list-branches",
+              "api-reference/endpoint/update-branch"
+            ]
+          },
+          {
+            "group": "Organizations",
+            "pages": [
+              "api-reference/endpoint/create-organization",
+              "api-reference/endpoint/delete-organization",
+              "api-reference/endpoint/get-organization",
+              "api-reference/endpoint/get-organizations",
+              "api-reference/endpoint/list-organization-members",
+              "api-reference/endpoint/remove-organization-member",
+              "api-reference/endpoint/update-organization"
+            ]
+          },
+          {
+            "group": "Projects",
+            "pages": [
+              "api-reference/endpoint/create-project",
+              "api-reference/endpoint/delete-project",
+              "api-reference/endpoint/get-project",
+              "api-reference/endpoint/get-project-limits",
+              "api-reference/endpoint/list-projects",
+              "api-reference/endpoint/update-project"
+            ]
+          },
+          {
+            "group": "API Keys",
+            "pages": [
+              "api-reference/endpoint/create-organization-api-key",
+              "api-reference/endpoint/create-user-api-key",
+              "api-reference/endpoint/delete-organization-api-keys",
+              "api-reference/endpoint/delete-user-api-keys",
+              "api-reference/endpoint/list-organization-api-keys",
+              "api-reference/endpoint/list-user-api-keys"
+            ]
+          },
+          {
+            "group": "Invitations",
+            "pages": [
+              "api-reference/endpoint/create-organization-invitation"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "api-reference/endpoint/list-instance-types",
+              "api-reference/endpoint/list-regions"
             ]
           }
         ]

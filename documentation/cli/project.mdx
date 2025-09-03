@@ -1,0 +1,88 @@
+---
+title: Project Command
+description: Commands for managing Xata projects
+---
+
+The `project` command helps you create, list, describe, and manage projects in Xata.
+
+## Subcommands
+
+### list
+List all projects.
+
+```bash
+xata project list [--organization <id>] [--json] [-h|--help]
+```
+- Aliases: `ls`
+- `--organization`: Organization ID (default: "")
+- `--json`: Output in JSON format (default: false)
+- `-h, --help`: Print help information and exit
+
+### describe
+Describe a project.
+
+```bash
+xata project describe [--organization <id>] [--project <id>] [--json] [-h|--help]
+```
+- Aliases: `view`, `show`
+- `--organization`: Organization ID (default: "")
+- `--project`: Project ID (default: "")
+- `--json`: Output in JSON format (default: false)
+- `-h, --help`: Print help information and exit
+
+### create
+Create a new project.
+
+```bash
+xata project create --name <name> [--organization <id>] [--branch-name <name>] [--instance-type <type>] [--replicas <n>] [--region <region>] [--json] [-h|--help]
+```
+- `--organization`: Organization ID (default: "")
+- `--name`: Project Name (required)
+- `--branch-name`: Branch Name (default: "")
+- `--instance-type`: Type of instance for this branch (default: "")
+- `--replicas`: Number of replicas for the branch (0-4, default: "")
+- `--region`: Region for the branch (default: "")
+- `--json`: Output in JSON format (default: false)
+- `-h, --help`: Print help information and exit
+
+### delete
+Delete a project.
+
+```bash
+xata project delete [--organization <id>] [--project <id>] [--json] [--yes] [-h|--help]
+```
+- `--organization`: Organization ID (default: "")
+- `--project`: Project ID (default: "")
+- `--json`: Output in JSON format (default: false)
+- `--yes`: Do not ask for confirmation, assume yes (default: false)
+- `-h, --help`: Print help information and exit
+
+### init
+Link a project to the folder.
+
+```bash
+xata project init [--organization <id>] [--project <id>] [--branch <id>] [--database <name>] [--json] [-h|--help]
+```
+- Aliases: `connect`, `switch`, `link`
+- `--organization`: Organization ID (default: "")
+- `--project`: Project ID (default: "")
+- `--branch`: Branch ID (default: "")
+- `--database`: Database name (default: "")
+- `--json`: Output in JSON format (default: false)
+- `-h, --help`: Print help information and exit
+
+### get
+Get a field from a project description.
+
+```bash
+xata project get [--organization <id>] [--project <id>] <field> [-h|--help]
+```
+- `--organization`: Organization ID (default: "")
+- `--project`: Project ID (default: "")
+- `field`: The field to get (default: `.catalog`)
+- `-h, --help`: Print help information and exit
+
+## Global Flags
+
+- `-h, --help` - Print help information and exit
+- `--json` - Output in JSON format 

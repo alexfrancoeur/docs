@@ -1,31 +1,21 @@
 ---
-sidebarTitle: "Django"
 title: "Connect Django to Xata"
-description: ""
-icon: "python"
+description: "Learn how to connect your Django application to Xata's PostgreSQL platform. Get started with Django and PostgreSQL for robust web applications."
 ---
-
-Learn how to connect your Django application to Xata's PostgreSQL platform.  
-Get started with Django and PostgreSQL for robust web applications.
-
-
 
 ## Prerequisites
 
-- Xata account and project setup  
-- Python 3.8+ installed  
+- Xata account and project setup
+- Python 3.8+ installed
 - Basic knowledge of Python and Django
-
-
 
 ## Setup Xata Database
 
 First, set up your Xata database with the common e-commerce dataset:
 
-1. Create a project and branch in the [Xata console](https://console.xata.io/)  
-2. Navigate to the **Queries** tab in your branch  
+1. Create a project and branch in the [Xata console](https://console.xata.io)
+2. Navigate to the **Queries** tab in your branch
 3. Run the following SQL commands to create the initial schema:
-.
 
 ```sql
 CREATE TABLE products (
@@ -49,8 +39,8 @@ CREATE TABLE order_items (
 ```
 
 ## Create Django Project
-Create a new Django project:
 
+Create a new Django project:
 
 ```bash
 pip install django psycopg2-binary
@@ -59,10 +49,9 @@ cd my_xata_app
 python manage.py startapp store
 ```
 
-
-
 ## Initialize Xata Project
-Initialize your Xata project configuration
+
+Initialize your Xata project configuration:
 
 ```bash
 xata init
@@ -70,13 +59,11 @@ xata init
 
 This will create a `.xata` directory with your project configuration.
 
-
-
 ## Store Your Credentials
 
 Create a `.env` file in your project root to store your Xata connection string:
 
-```sql
+```bash
 # .env
 DATABASE_URL="postgresql://username:password@host:port/database"
 ```
@@ -86,23 +73,20 @@ Get your connection string from the Xata console or CLI:
 ```bash
 xata branch url
 ```
-<Warning>
-**Important**: Never commit your `.env` file. Add it to `.gitignore`.
-</Warning>
 
-
+**Important:** Never commit your `.env` file to version control. Add it to your `.gitignore` file.
 
 ## Install Dependencies
+
 Install additional dependencies:
+
 ```bash
 pip install python-decouple
 ```
 
-
-
 ## Configure Database Connection
-Update your `settings.py` to use the Xata PostgreSQL database:
 
+Update your `settings.py` to use the Xata PostgreSQL database:
 
 ```python
 # my_xata_app/settings.py
@@ -134,7 +118,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Create a `.env` file with the database components
+Create a `.env` file with the database components:
 
 ```bash
 # .env
@@ -145,10 +129,10 @@ DB_HOST=your_host
 DB_PORT=5432
 ```
 
-
-
 ## Create Models
+
 Create your Django models in `store/models.py`:
+
 ```python
 # store/models.py
 from django.db import models
@@ -179,11 +163,9 @@ class OrderItem(models.Model):
         return f"{self.qty}x {self.product.name} in Order {self.order.id}"
 ```
 
-
-
 ## Create Views
-Create views in `store/views.py`:
 
+Create views in `store/views.py`:
 
 ```python
 # store/views.py
@@ -251,10 +233,10 @@ def order_list(request):
     return JsonResponse(data, safe=False)
 ```
 
-
-
 ## Configure URLs
+
 Update your main `urls.py`:
+
 ```python
 # my_xata_app/urls.py
 from django.contrib import admin
@@ -265,6 +247,7 @@ urlpatterns = [
     path('api/', include('store.urls')),
 ]
 ```
+
 Create `store/urls.py`:
 
 ```python
@@ -280,9 +263,8 @@ urlpatterns = [
 ]
 ```
 
-
-
 ## Run Migrations
+
 Since you're using an existing database schema, you can create a migration that matches your existing tables:
 
 ```bash
@@ -326,6 +308,7 @@ class Migration(migrations.Migration):
         """),
     ]
 ```
+
 Run the migration:
 
 ```bash
@@ -333,18 +316,19 @@ python manage.py migrate
 ```
 
 ## Run the Application
-Start your development server:
 
+Start your development server:
 
 ```bash
 python manage.py runserver
 ```
 
 Your API will be available at:
-1. `http://localhost:8000/api/products/` 
-2. `http://localhost:8000/api/orders/` 
+- `http://localhost:8000/api/products/`
+- `http://localhost:8000/api/orders/`
 
-## Test Your API ##
+## Test Your API
+
 You can test the endpoints using curl:
 
 ```bash
@@ -359,7 +343,9 @@ curl -X POST http://localhost:8000/api/products/create/ \
 # Get orders with products
 curl http://localhost:8000/api/orders/
 ```
-## Next Steps ##
-- Explore [Xata branching](/documentation/core-concepts/branching) for development workflows
-- Learn about [schema changes](/documentation/core-concepts/schema-changes) with zero downtime
-- Join our [Discord community](https://discord.gg/xata) for help and support
+
+## Next Steps
+
+- Explore [Xata branching](/core-concepts/branching) for development workflows
+- Learn about [schema changes](/core-concepts/schema-changes) with zero downtime
+- Join our [Discord community](https://discord.gg/xata) for help and support 

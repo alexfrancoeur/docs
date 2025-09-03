@@ -1,0 +1,70 @@
+---
+title: Auth Command
+description: Commands for authenticating with Xata
+---
+
+The `auth` command helps you manage authentication and account profiles for the Xata CLI.
+
+## Subcommands
+
+### login
+Log in to a Xata account.
+
+```bash
+xata auth login [--env dev|staging|prod] [--profile <name>] [-f|--force] [-h|--help]
+```
+- `--env`: Environment to log in to (`dev|staging|prod`, default: `prod`)
+- `--profile`: Profile to log in to (default: `default`)
+- `-f, --force`: Force login even if already logged in
+- `-h, --help`: Print help information and exit
+
+### logout
+Log out of the current account.
+
+```bash
+xata auth logout [--profile <name>] [--yes] [-h|--help]
+```
+- `--profile`: Profile to log out of (default: `default`)
+- `--yes`: Do not ask for confirmation, assume yes
+- `-h, --help`: Print help information and exit
+
+### status
+Display active account and authentication state.
+
+```bash
+xata auth status [--profile <name>] [-h|--help]
+```
+- `--profile`: Profile to log in to (default: `default`)
+- `-h, --help`: Print help information and exit
+
+### switch
+Switch to a different Xata account profile.
+
+```bash
+xata auth switch <profile>
+xata auth switch --help
+```
+- `<profile>`: The profile to switch to
+- `-h, --help`: Print help information and exit
+
+### access-token
+Print the current access token.
+
+```bash
+xata auth access-token [--profile <name>] [-h|--help]
+```
+- `--profile`: Profile to log in to (default: `default`)
+- `-h, --help`: Print help information and exit
+
+### refresh-token
+Print the current refresh token.
+
+```bash
+xata auth refresh-token [--profile <name>] [-h|--help]
+```
+- `--profile`: Profile to log in to (default: `default`)
+- `-h, --help`: Print help information and exit
+
+## Global Flags
+
+- `-h, --help` - Print help information and exit 

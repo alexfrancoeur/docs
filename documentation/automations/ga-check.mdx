@@ -1,16 +1,13 @@
 ---
-title: 'Check merge readiness'
-sidebarTitle: 'GitHub Actions: Check merge readiness'
-icon: "github"
-
+title: Check merge readiness
+description: GitHub Actions workflow for validating main branch status and migration readiness
 ---
 
-GitHub Actions workflow for validating main branch status and migration readiness\
 This workflow validates that the main branch is in a ready state for merging pull requests. It checks the migration status and ensures no pending migrations are running that could affect the merge process.
 
 ## Workflow configuration
 
-```bash
+```yaml
 name: Check merge readiness
 
 on:
@@ -48,20 +45,19 @@ jobs:
 ```
 
 ## Authentication and environment variables
+
 The workflow requires several environment variables to be set:
 
-<ul>
-<li>`XATA_API_REFRESH_TOKEN`: Your Xata API refresh token (set as a GitHub secret)</li>
-<li>`XATA_ORGANIZATIONID`: Your Xata organization ID</li>
-<li>`XATA_PROJECTID`: Your Xata project ID</li>
-<li>`XATA_BRANCHID`: The ID of the main branch</li>
-<li>`XATA_BRANCHNAME`: The name of the main branch</li>
-<li>`XATA_DATABASENAME`: Your database name</li>
-</ul>
+- `XATA_API_REFRESH_TOKEN`: Your Xata API refresh token (set as a GitHub secret)
+- `XATA_ORGANIZATIONID`: Your Xata organization ID
+- `XATA_PROJECTID`: Your Xata project ID
+- `XATA_BRANCHID`: The ID of the main branch
+- `XATA_BRANCHNAME`: The name of the main branch
+- `XATA_DATABASENAME`: Your database name
 
 If you have the Xata CLI configured with your project locally, you can obtain these values with the following commands:
 
-```bash
+```sh
 # XATA_API_REFRESH_TOKEN
 xata auth refresh-token
 
@@ -77,75 +73,62 @@ xata branch get id
 
 ## Workflow steps
 
-<Steps>
-  <Step title="Install Xata CLI" titleSize="h3">
-      ```bash
+### 1. Install Xata CLI
+
+```yaml
 - name: Install Xata CLI
-run: |
-curl -fsSL https://xata.io/install.sh | bash
+  run: |
+    curl -fsSL https://xata.io/install.sh | bash
 ```
+
 This step installs the Xata CLI using the official installer script and adds it to the GitHub Actions PATH.
-  </Step>
-  <Step title="Check Xata status" titleSize="h3">
-  ```bash
+
+### 2. Check Xata status
+
+```yaml
 - name: Check Xata status
-run: |
-xata status
-xata roll status
-xata branch view
+  run: |
+    xata status
+    xata roll status
+    xata branch view
 ```
+
 This step performs three checks:
-<ul>
-<li>Verifies CLI and connection status</li>
-<li>Checks for any pending migrations</li>
-<li>Views the current branch status</li>
-</ul>
-  </Step>
-</Steps>
+- Verifies CLI and connection status
+- Checks for any pending migrations
+- Views the current branch status
 
 ## Concurrency control
+
 The workflow uses GitHub Actions concurrency to prevent multiple runs from interfering with each other:
 
-```bash
+```yaml
 concurrency:
-group: ${{ github.workflow }}-${{ github.ref }}
-cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 ```
 
 This ensures that:
-<ul>
-<li>Only one workflow run per branch is active at a time</li>
-<li>New runs cancel any in-progress runs</li>
-<li>Prevents race conditions during status checks</li>
-</ul>
+- Only one workflow run per branch is active at a time
+- New runs cancel any in-progress runs
+- Prevents race conditions during status checks
 
 ## Best practices
-<Steps>
-  <Step title="Set appropriate timeout">
-<ul>
-<li>The workflow has a 10-minute timeout</li>
-<li>Adjust based on your maximum migration duration</li>
-</ul>
-  </Step>
-  
-  <Step title="Use environment variables">
-<ul>
-<li>Store sensitive information in GitHub secrets</li>
-<li>Use environment variables for configuration</li>
-</ul>
-  </Step>
 
-  <Step title="Handle migration states">
-<ul>
-<li>Check for in-progress migrations</li>
-<li>Prevent merging during active migrations</li>
-<li>Provide clear error messages</li>
-</ul>
-  </Step>
-</Steps>
+1. **Set appropriate timeout**
+   - The workflow has a 10-minute timeout
+   - Adjust based on your maximum migration duration
+
+2. **Use environment variables**
+   - Store sensitive information in GitHub secrets
+   - Use environment variables for configuration
+
+3. **Handle migration states**
+   - Check for in-progress migrations
+   - Prevent merging during active migrations
+   - Provide clear error messages
 
 ## Related workflows
-<ul>
-<li>[Clone workflow](/documentation/automations/clone.mdx) - For cloning databases in CI/CD</li>
-<li>[PR workflow](/documentation/automations/pr.mdx) - For managing pull request environments</li>
-</ul>
+
+- [Clone workflow](./clone.mdx) - For cloning databases in CI/CD
+- [PR workflow](./pr.mdx) - For managing pull request environments 

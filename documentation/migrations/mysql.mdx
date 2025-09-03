@@ -1,20 +1,17 @@
 ---
-sidebarTitle: "MySQL"
 title: "Migrate from MySQL to Xata"
-description: ""
-icon: "database"
+description: "Learn how to migrate your MySQL database to Xata using mysqldump and schema conversion. Step-by-step instructions for migrating from MySQL to PostgreSQL."
 ---
-
-Learn how to migrate your MySQL database to Xata using mysqldump and schema conversion. Step-by-step instructions for migrating from MySQL to PostgreSQL.
 
 ## Prerequisites
 
-- MySQL database (5.7 or 8.0)  
-- Access to MySQL server with sufficient privileges  
-- Xata account and project setup  
+- MySQL database (5.7 or 8.0)
+- Access to MySQL server with sufficient privileges
+- Xata account and project setup
 - Network access to your MySQL server
 
 ## Install and Configure the Xata CLI
+
 Install the Xata CLI:
 
 ```bash
@@ -26,15 +23,16 @@ Authenticate with your Xata account:
 ```bash
 xata auth login
 ```
-## Important Note ##
- Xata is built on PostgreSQL, so migrating from MySQL requires:
+
+## Important Note
+
+Xata is built on PostgreSQL, so migrating from MySQL requires:
 - **Schema conversion** from MySQL to PostgreSQL
-- **Data export/import** using `mysqldump`
+- **Data export/import** using mysqldump
 - **Manual verification** of data types and constraints
 
-
-
 ## Create Migration User
+
 Connect to your MySQL database and create a dedicated user for migration:
 
 ```sql
@@ -51,9 +49,8 @@ GRANT SELECT, LOCK TABLES, SHOW VIEW ON your_database.* TO 'xata_migration'@'%';
 FLUSH PRIVILEGES;
 ```
 
----
-
 ## Export MySQL Schema
+
 First, export your MySQL schema to understand the structure:
 
 ```bash
@@ -70,13 +67,13 @@ mysqldump --routines --triggers \
   -p your_database > full_backup.sql
 ```
 
----
-
 ## Schema Conversion
-### Common MySQL to PostgreSQL Conversions
-You'll need to convert your MySQL schema to PostgreSQL format:
-#### Data Types
 
+### Common MySQL to PostgreSQL Conversions
+
+You'll need to convert your MySQL schema to PostgreSQL format:
+
+#### Data Types
 ```sql
 -- MySQL -> PostgreSQL
 INT -> INTEGER
@@ -89,8 +86,7 @@ BOOLEAN -> BOOLEAN
 JSON -> JSONB
 ```
 
-### Auto Increment
-
+#### Auto Increment
 ```sql
 -- MySQL
 id INT AUTO_INCREMENT PRIMARY KEY
@@ -101,8 +97,7 @@ id SERIAL PRIMARY KEY
 id BIGSERIAL PRIMARY KEY
 ```
 
-### Indexes
-
+#### Indexes
 ```sql
 -- MySQL
 CREATE INDEX idx_name ON table_name(column_name);
@@ -111,8 +106,7 @@ CREATE INDEX idx_name ON table_name(column_name);
 CREATE INDEX idx_name ON table_name(column_name);
 ```
 
-### Foreign Keys
-
+#### Foreign Keys
 ```sql
 -- MySQL
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
@@ -140,12 +134,15 @@ mysqldump --no-create-info --complete-insert \
 ```
 
 ## Initialize Xata Project
+
 Set up your Xata project configuration:
+
 ```bash
 xata init
 ```
 
 ## Create PostgreSQL Schema
+
 Create the converted schema in Xata:
 
 ```bash
@@ -157,7 +154,9 @@ psql "your-xata-connection-string" -f converted_schema.sql
 ```
 
 ## Import Data
+
 Import your converted data into Xata:
+
 ```bash
 # Import data
 psql "your-xata-connection-string" -f converted_data.sql
@@ -167,8 +166,8 @@ psql "your-xata-connection-string" -f specific_tables_data.sql
 ```
 
 ## Alternative: Using pgloader
-For more automated conversion, you can use `pgloader`:
 
+For more automated conversion, you can use `pgloader`:
 
 ```bash
 # Install pgloader
@@ -205,33 +204,37 @@ CAST
 # Run the conversion
 pgloader convert.load
 ```
+
 ## Verification
+
 After migration, verify your data:
-1. **Connect to Xata Branch:**
 
-```bash
-xata branch url
-```
-2. **Check Data Integrity:**
-```sql
--- Compare row counts
-SELECT COUNT(*) FROM your_table;
+1. **Connect to Xata Branch**:
+   ```bash
+   xata branch url
+   ```
 
--- Check sample data
-SELECT * FROM your_table LIMIT 10;
+2. **Check Data Integrity**:
+   ```sql
+   -- Compare row counts
+   SELECT COUNT(*) FROM your_table;
+   
+   -- Check sample data
+   SELECT * FROM your_table LIMIT 10;
+   
+   -- Check foreign key relationships
+   SELECT COUNT(*) FROM table1 t1 
+   JOIN table2 t2 ON t1.id = t2.table1_id;
+   ```
 
--- Check foreign key relationships
-SELECT COUNT(*) FROM table1 t1 
-JOIN table2 t2 ON t1.id = t2.table1_id;
-```
-
-3. **Test Application:** Verify your application works with the new PostgreSQL schema
-
+3. **Test Application**: Verify your application works with the new PostgreSQL schema
 
 ## Common Conversion Issues
 
 ### 1. Date/Time Handling
+
 MySQL and PostgreSQL handle dates differently:
+
 ```sql
 -- MySQL
 SELECT NOW();
@@ -243,7 +246,9 @@ SELECT CURRENT_TIMESTAMP;
 ```
 
 ### 2. String Functions
+
 Some string functions differ:
+
 ```sql
 -- MySQL
 CONCAT(str1, str2)
@@ -265,7 +270,9 @@ column->>'key'
 ```
 
 ### 4. Auto Increment Sequences
+
 After importing, reset sequences:
+
 ```sql
 -- For each table with auto increment
 SELECT setval('table_name_id_seq', (SELECT MAX(id) FROM table_name));
@@ -273,7 +280,7 @@ SELECT setval('table_name_id_seq', (SELECT MAX(id) FROM table_name));
 
 ## Next Steps
 
-- Explore [Xata Branching](https://xata.io/documentation/core-concepts/branching) for development workflows
-- Learn about [Schema Changes](https://xata.io/documentation/core-concepts/schema-changes) with zero downtime
-- Set up [continuous sync](https://xata.io/documentation/tutorials/create-staging-replica) for ongoing replication
-- Consider [Deployment Options](https://xata.io/documentation/deployment) for your Xata instance
+- Explore [Xata branching](/core-concepts/branching) for development workflows
+- Learn about [schema changes](/core-concepts/schema-changes) with zero downtime
+- Set up [continuous sync](/tutorials/create-staging-replica) for ongoing replication
+- Consider [deployment options](/deployment) for your Xata instance 

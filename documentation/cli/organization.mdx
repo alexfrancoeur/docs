@@ -1,38 +1,35 @@
 ---
-title: "Organization Commands"
-sidebarTitle: "organization"
-description: ""
-icon: "building"
+title: Organization Command
+description: Commands for managing Xata organizations
 ---
 
-Commands for managing Xata organizations\
 The `organization` command helps you create, list, describe, and manage organizations in Xata.
 
 ## Subcommands
 
-#### list 
+### list
 List all organizations.
 
-```bash 
+```bash
 xata organization list [--json] [-h|--help]
 ```
 - Aliases: `ls`
-- `--json`: Output in JSON format(default: false)
+- `--json`: Output in JSON format (default: false)
 - `-h, --help`: Print help information and exit
 
-#### describe 
+### describe
 Describe an organization.
+
 ```bash
-xata organization describe [organization-id] [--json] [-h|--help]
+xata organization describe [--organization <id>] [--json] [-h|--help]
 ```
 - Aliases: `view`, `show`
 - `--organization`: Organization ID (default: "")
 - `--json`: Output in JSON format (default: false)
 - `-h, --help`: Print help information and exit
 
-
-#### create 
-Create a new organization
+### create
+Create a new organization.
 
 ```bash
 xata organization create --name <name> [--json] [-h|--help]
@@ -41,22 +38,20 @@ xata organization create --name <name> [--json] [-h|--help]
 - `--json`: Output in JSON format (default: false)
 - `-h, --help`: Print help information and exit
 
-
-
-#### delete 
+### delete
 Delete an organization.
+
 ```bash
 xata organization delete [--organization <id>] [--json] [--yes] [-h|--help]
 ```
-
 - `--organization`: Organization ID (default: "")
 - `--json`: Output in JSON format (default: false)
 - `--yes`: Do not ask for confirmation, assume yes (default: false)
 - `-h, --help`: Print help information and exit
 
-
-#### get
+### get
 Get a field from an organization description.
+
 ```bash
 xata organization get [--organization <id>] <field> [-h|--help]
 ```
@@ -64,7 +59,7 @@ xata organization get [--organization <id>] <field> [-h|--help]
 - `field`: The field to get (default: `.catalog`)
 - `-h, --help`: Print help information and exit
 
-
 ## Global Flags
-- `-h, --help`- Print help information and exit
-- `--json` - Output in JSON format
+
+- `-h, --help` - Print help information and exit
+- `--json` - Output in JSON format 
